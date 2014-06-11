@@ -1,7 +1,8 @@
 ParticleSystem
 ==============
 
-A very basic Particle System which I had started(didnt finish)
+Particle System Version 2.0
+Makes interesting patterns using particle effects
 
 Instructions
   - Right click/drag adds particles to the screen
