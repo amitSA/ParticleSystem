@@ -1,3 +1,6 @@
+/* Particle System
+ * Copywrite 2013 Amit Saxena 
+*/
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
