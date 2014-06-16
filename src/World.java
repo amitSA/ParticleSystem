@@ -10,7 +10,7 @@ public class World
 
 	private ArrayList<Particle> particles;
 	private BigDecimal worldSpeed;  // speed in miliseconds
-
+    
 
 	public World(BigDecimal speed)
 	{

@@ -2,6 +2,8 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 import java.math.*;
 import java.util.ArrayList;
 
@@ -16,13 +18,15 @@ public class GamePanel extends JPanel implements ActionListener
 	private World world;
 	private BigDecimal engineSpeed; // in miliseconds
 	private MouseInteraction mouseInter;
-	private ParticleSystem partSys;
+	
 	private JButton refreshButton;
 	/*WARNING: if this is changed while the program is running, then the speed in World will
 	 also have to change as well*/
 
 	private ArrayList<Particle> particles;
-
+	
+//	private static int [] rasterArray;
+//    private BufferedImage image;
 	//MAKE A SEPARATE MOUSEWHEELTHING CLASS, more cohesiox(i think)
 
 
@@ -42,6 +46,11 @@ public class GamePanel extends JPanel implements ActionListener
 		refreshButton.addActionListener(new ButtonInputHandler());
 		//ADD A CHECK IN CLASS
 		
+	//	image = new BufferedImage(1000,1000,BufferedImage.TYPE_INT_ARGB);
+	//	rasterArray = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
+		
+	  
+		
 		timer = new Timer(engineSpeed.intValue(),this);
 		timer.start();
 		
@@ -51,10 +60,14 @@ public class GamePanel extends JPanel implements ActionListener
 	{
 		super.paintComponent(g);
 		this.setBackground(Color.BLACK);
+		
+		//g.drawImage(image,0,0,1000,1000,null);
+		//g.drawImage(image, 0, 0, null);
+		//System.out.println(image);
+		g.setColor(Color.WHITE);
+	    g.drawString(particles.size()+"",30, 10);
 		for(Particle p:particles)
-		{
 			p.drawParticle(g);
-		}
 	}
 
 	public void actionPerformed(ActionEvent e) 

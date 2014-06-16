@@ -39,7 +39,9 @@ public class Particle
 	{
 		Color cOld = g.getColor();
 		g.setColor(color);
-		g.fillOval((int)(xCoord-radius+0.5), (int)(yCoord-radius+0.5), (int)(radius*2+0.5), (int)(radius*2+0.5));
+		
+		g.fillRect((int)(xCoord-radius+0.5), (int)(yCoord-radius+0.5), (int)(radius*2+0.5), (int)(radius*2+0.5));
+	
 		g.setColor(cOld);
 	}
 
