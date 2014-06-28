@@ -13,14 +13,10 @@ public class MouseInteraction implements MouseInputListener
 {
 
 	private World world;
-	private ArrayList<Particle> particles;
-	private boolean shouldRelease;
 
-	public MouseInteraction(World world, ArrayList<Particle> particles)
+	public MouseInteraction(World world)
 	{
 		this.world = world;
-		this.particles = particles;
-		shouldRelease = false;
 	}
 
 	@Override
@@ -44,9 +40,8 @@ public class MouseInteraction implements MouseInputListener
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if(SwingUtilities.isLeftMouseButton(e)) //CHECK	
-			world.addGravityBall(new GravityBall(1,5,Color.GRAY,e.getX(),e.getY(),0.06));  //HARDCODED VALUE THAT SHOULD CHANGE IF 
-		// ENGINE SPEED IS CHANGED
-	}
+			world.addParticle(new GravityBall(world,(float)e.getX(),(float)e.getY(),new Color(-1),0.06f,5f));  //radius doesnt really matter
+	}//world.addGravityBall(new GravityBall(1,5,Color.GRAY,e.getX(),e.getY(),0.06));  //HARDCODED VALUE THAT SHOULD CHANGE IF  																		
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
@@ -58,22 +53,19 @@ public class MouseInteraction implements MouseInputListener
 	//	System.out.println("sdfsdf");
 		if(SwingUtilities.isRightMouseButton(e)) //CHECK	
 		{
-			double velCons = .12;
+			double velCons = .5;  //.12
 			for(int i = 0;i<30;i++)
 			{
-				double angle = Math.random()*Math.PI*2;
-				double xV = Math.cos(angle)*velCons;
-				double yV = Math.sin(angle)*velCons;
+				float angle = (float)(Math.random()*Math.PI*2);
+				float xV = (float)(Math.cos(angle)*velCons);
+				float yV = (float)(Math.sin(angle)*velCons);
 				int cX = (int)(Math.random()*11)-5;
-				int cY = (int)(Math.random()*11)-5;
-				particles.add(new Particle(1,new Color(50,205,50),e.getX()+cX,e.getY()+cY,xV,yV)); 
+				int cY = (int)(Math.random()*11)-5; 
+				world.addParticle(new MovingParticle(world,(float)(e.getX()+cX),(float)(e.getY()+cY),new Color(-6351356),xV,yV,angle));
 			}
-			//particles.add(new Particle(2,new Color(50,205,50),e.getX(),e.getY())); 
+			//particles.add(new MovingParticle(1,new Color(50,205,50),e.getX()+cX,e.getY()+cY,xV,yV));
 		}
-
-
 	}
-
 	@Override
 	public void mouseMoved(MouseEvent arg0) 
 	{
