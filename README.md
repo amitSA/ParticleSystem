@@ -2,7 +2,7 @@ ParticleSystem
 ==============
 
 This program can make interesting patterns using particle effects
-Particle System Version 2.2
+Particle System Version 2.4
  - improved the particle rendering system to hold more particles, now it can hold up to 15,000 particles with 1 gravity well
 
 Instructions
